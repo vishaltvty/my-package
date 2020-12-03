@@ -17,7 +17,9 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org
+      - name: tests
+        run: cd npm && npx jest
       - name: publish
-        run: cd npm && npm publish
+        run: cd npm && npm publish --dry-run
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
