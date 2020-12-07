@@ -1,10 +1,9 @@
+name: "🚀 publish nuget"
 
-name: Publish Nuget
-
-on: 
+on:
   push:
-    branches: 
-      - master
+    branches:
+      - main
 
 jobs:
   publish-nuget:
