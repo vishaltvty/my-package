@@ -20,4 +20,4 @@ jobs:
       - name: Build
         run: cd nuget/Applogger && dotnet build --configuration Release
       - name: Test
-        run: dotnet test
+        run: cd nuget/Applogger && dotnet test
