@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Tivity Health</Authors>
+    <PackageId>TivityHealth.Test.Applogger2.0</PackageId>
+    <Description>Library to log text to console</Description>
+    <PackageTags>Logs, Logger, Logging, Text</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+</Project>
