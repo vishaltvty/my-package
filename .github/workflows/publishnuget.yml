@@ -21,14 +21,14 @@ jobs:
         run: |
           cd nuget/Applogger
           dotnet build --configuration release
-      - name: Generate NuGet package
-        run: |
-          cd nuget/Applogger
-          dotnet pack -c Release -o out
       - name: Test
         run: |
           cd nuget/Applogger
           dotnet test
+      - name: Generate NuGet package
+        run: |
+          cd nuget/Applogger
+          dotnet pack -c Release -o out
       - name: Push with dotnet
         run: |
           cd nuget/Applogger
