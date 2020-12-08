@@ -17,10 +17,14 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: "3.1.x"
-      - name: Build solution and generate NuGet package
+      - name: Build solution
         run: |
           cd nuget/Applogger
           dotnet pack -c Release -o out
+      - name: Generate NuGet package
+        run: |
+          cd nuget/Applogger
+          dotnet build --configuration release
       - name: Test
         run: |
           cd nuget/Applogger
