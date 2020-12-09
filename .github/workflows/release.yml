@@ -1,0 +1,26 @@
+name: .NET Core
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    - name: Create NuGet package
+      run: |
+          cd nuget/Applogger
+          dotnet pack -c Release /p:Version=${{ github.event.release.tag_name }}
+    - name: Archive NuGet Package
+      uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: "**/*.nupkg"
