@@ -15,12 +15,19 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.301
+    - name: Build solution
+      run: |
+          cd nuget/Applogger
+          dotnet build --configuration release
+    - name: Test
+      run: |
+          cd nuget/Applogger
+          dotnet test
     - name: Create NuGet package
       run: |
           cd nuget/Applogger
           dotnet pack -c Release /p:Version=${{ github.event.release.tag_name }}
-    - name: Archive NuGet Package
-      uses: actions/upload-artifact@v2
-      with:
-        name: my-artifact
-        path: "**/*.nupkg"
+    - name: Push with dotnet
+      run: |
+          cd nuget/Applogger
+          dotnet nuget push **/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
