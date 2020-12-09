@@ -28,7 +28,7 @@ jobs:
       - name: Generate NuGet package
         run: |
           cd nuget/Applogger
-          dotnet pack -c Release -o out
+          dotnet pack -c Release -o out --version-suffix v-$(date +%Y%m%d%H%M%S)
       - name: Push with dotnet
         run: |
           cd nuget/Applogger
