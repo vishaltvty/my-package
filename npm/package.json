@@ -1,6 +1,6 @@
 {
   "name": "my-package-vishaltvty",
-  "version": ${{ github.event.release.tag_name }},
+  "version": `${{ github.event.release.tag_name }}`,
   "description": "",
   "main": "src/index.js",
   "scripts": {
