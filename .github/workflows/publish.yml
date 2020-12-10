@@ -22,8 +22,8 @@ jobs:
         run: cd npm && npm ci
       - name: tests
         run: cd npm && npx jest
-      - name: update version ${{ github.event.release.tag_name }}
-        run:
+      - name: update version
+        run: cd npm && npm version ${{ github.event.release.tag_name }}
       - name: publish
         run: cd npm && npm publish --dry-run
         env:
