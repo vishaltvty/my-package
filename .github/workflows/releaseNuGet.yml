@@ -1,4 +1,4 @@
-name: CI
+name: "🚀 publish nuget"
 
 on:
   release:
@@ -6,28 +6,27 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.301
-    - name: Build solution
-      run: |
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.301
+      - name: Build solution
+        run: |
           cd nuget/Applogger
           dotnet build --configuration release
-    - name: Test
-      run: |
+      - name: Test
+        run: |
           cd nuget/Applogger
           dotnet test
-    - name: Create NuGet package
-      run: |
+      - name: Create NuGet package
+        run: |
           cd nuget/Applogger
           dotnet pack -c Release /p:Version=${{ github.event.release.tag_name }}
-    - name: Push with dotnet
-      run: |
+      - name: Push with dotnet
+        run: |
           cd nuget/Applogger
           dotnet nuget push **/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
