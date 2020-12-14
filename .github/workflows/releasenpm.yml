@@ -16,9 +16,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
-          registry-url: https://registry.npmjs.org
-      - name: copy js bundle
-        run: cd npm/bundle/ && cp index_bundle.js ../../nuget/Applogger
+          registry-url: https://registry.npmjs.org      
       - name: Install
         run: cd npm && npm ci
       - name: tests
